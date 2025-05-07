@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.querySelector('.nav-toggle');
     const dropdowns = document.querySelectorAll('.has-dropdown');
     const themeToggle = document.querySelector('.theme-toggle');
-    const searchInput = document.querySelector('.search-input');
-    const searchBtn = document.querySelector('.search-btn');
     const moonIcon = document.querySelector('.moon-icon');
     const sunIcon = document.querySelector('.sun-icon');
+    const logoB = document.querySelector('.logoB');
+    const logoP = document.querySelector('.logoP');
 
     // Mobile menu toggle with animation
     navToggle.addEventListener('click', () => {
@@ -78,27 +78,36 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isDark) {
             // Switch to dark theme
             transformToTheme(
-                '#0a0a12', 
+                '#151515', 
                 '#ffffff', 
-                'rgba(16, 16, 26, 0.7)', 
-                'rgba(20, 20, 35, 0.8)'
+                'rgba(15, 15, 15, 0.7)', 
+                '#151515'
             );
             
             // Switch icons
             moonIcon.classList.remove('hidden');
             sunIcon.classList.add('hidden');
+
+            
+            logoB.classList.remove('hidden');
+            logoP.classList.add('hidden');
+
         } else {
             // Switch to light theme
             transformToTheme(
-                '#ffffff', 
-                '#0a0a12', 
-                'rgba(255, 255, 255, 0.8)', 
+                '#000000', 
+                '#000000', 
+                'rgba(216, 202, 0, 0.8)', 
                 'rgba(240, 240, 255, 0.9)'
             );
             
             // Switch icons
             moonIcon.classList.add('hidden');
             sunIcon.classList.remove('hidden');
+            
+
+            logoB.classList.add('hidden');
+            logoP.classList.remove('hidden');
         }
     });
     
@@ -111,11 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Adjust gradient background and text description color
         if (isDark) {
-            document.documentElement.style.setProperty('--gradient-bg', 'linear-gradient(135deg, #0a0a12, #151530)');
+            document.documentElement.style.setProperty('--gradient-bg', 'radial-gradient(#2a2a2a, var(--bg-color))');
             document.documentElement.style.setProperty('--border-color', 'rgba(255, 255, 255, 0.08)');
             document.documentElement.style.setProperty('--text-description', 'rgba(255, 255, 255, 0.7)');
         } else {
-            document.documentElement.style.setProperty('--gradient-bg', 'linear-gradient(135deg, #ffffff, #f0f4ff)');
+            document.documentElement.style.setProperty('--gradient-bg', 'radial-gradient( #ffffff, #f0f4ff)');
             document.documentElement.style.setProperty('--border-color', 'rgba(0, 0, 0, 0.08)');
             document.documentElement.style.setProperty('--text-description', 'rgba(0, 0, 0, 0.7)');
         }
@@ -142,26 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
             performSearch(searchInput.value.trim());
         }
     });
-    
-    // Animated search focus
-    searchInput.addEventListener('focus', () => {
-        searchInput.parentElement.classList.add('search-focused');
-    });
-    
-    searchInput.addEventListener('blur', () => {
-        searchInput.parentElement.classList.remove('search-focused');
-    });
-    
-    function performSearch(query) {
-        // Add your search logic here
-        console.log('Searching for:', query);
-        
-        // Show visual feedback
-        searchBtn.classList.add('search-active');
-        setTimeout(() => {
-            searchBtn.classList.remove('search-active');
-        }, 300);
-    }
 
     // Handle window resize
     window.addEventListener('resize', () => {
@@ -192,14 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
         @keyframes slideUp {
             from { opacity: 1; transform: translateY(0); }
             to { opacity: 0; transform: translateY(-10px); }
-        }
-        
-        .search-focused {
-            box-shadow: 0 0 0 3px var(--primary-glow) !important;
-        }
-        
-        .search-active {
-            animation: pulse 0.3s ease;
         }
         
         @keyframes pulse {
