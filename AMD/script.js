@@ -88,16 +88,20 @@ document.addEventListener('DOMContentLoaded', () => {
             moonIcon.classList.remove('hidden');
             sunIcon.classList.add('hidden');
 
-            
+            // Switch Logo
             logoB.classList.remove('hidden');
             logoP.classList.add('hidden');
+
+            // Switch color
+            body.classList.remove('light');
+            body.classList.add('dark');
 
         } else {
             // Switch to light theme
             transformToTheme(
                 '#000000', 
                 '#000000', 
-                'rgba(216, 202, 0, 0.8)', 
+                'linear-gradient(135deg, rgba(205, 172, 58, 0.8), rgba(158, 130, 39, 0.8))', 
                 'rgba(240, 240, 255, 0.9)'
             );
             
@@ -105,9 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
             moonIcon.classList.add('hidden');
             sunIcon.classList.remove('hidden');
             
-
+            // Switch Logo
             logoB.classList.add('hidden');
             logoP.classList.remove('hidden');
+
+            // Switch color
+            body.classList.add('light');
+            body.classList.remove('drak');
         }
     });
     
